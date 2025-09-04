@@ -7,6 +7,7 @@ import { useWave } from '../engine/WaveProvider'
 import { SimplexNoise } from 'three/examples/jsm/math/SimplexNoise.js'
 import { useMouseOnPlane } from '../utils/useMouseOnPlane'
 import { getBoidState, setBoidState } from '../utils/boidStateCache'
+import { assetUrl } from '../utils/assetUrl'
 
 function quatFromDirNoRoll(dir, out) {
   const len2 = dir.lengthSq();
@@ -540,6 +541,6 @@ function Koi({
   )
 }
 
-useGLTF.preload('/koi.glb')
+useGLTF.preload(assetUrl('koi.glb'))
 
 export default React.memo(Koi)
