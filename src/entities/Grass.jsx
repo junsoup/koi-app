@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import InstancedGLTF from '../engine/InstancedGLTF'
 import { useWave } from '../engine/WaveProvider'
+import { assetUrl } from '../utils/assetUrl'
 
 /**
  * Props:
@@ -35,7 +36,7 @@ export default function Grass({
   }
 
   // Estimate blade height
-  const { scene: grassScene } = useGLTF('/grass.glb')
+  const { scene: grassScene } = useGLTF(assetUrl('/grass.glb'))
   const bladeHeight = useMemo(() => {
     let maxH = 1
     grassScene.traverse((o) => {
@@ -146,5 +147,5 @@ export default function Grass({
   )
 }
 
-useGLTF.preload('/grass.glb')
-useGLTF.preload('/flower_cap.glb')
+useGLTF.preload(assetUrl('/grass.glb'))
+useGLTF.preload(assetUrl('/flower_cap.glb'))

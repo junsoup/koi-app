@@ -28,7 +28,7 @@ function quatFromDirNoRoll(dir, out) {
 }
 
 function Koi({
-  path = '/koi.glb',
+  path = assetUrl('/koi.glb'),
   count = 100,
 
   // Pond bounds
