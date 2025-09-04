@@ -13,8 +13,8 @@ export default function App() {
   const theme = THEMES[themeName]
 
   const views = [
-    { pos: [12, 9, 0], zoom: 50, pixelScale: 6 },
-    { pos: [0, 15, 0], zoom: 28, pixelScale: 4 }
+    { pos: [12, 9, 0], zoom: 50, pixelScale: 4 },
+    { pos: [0, 15, 0], zoom: 28, pixelScale: 3 }
   ]
   const [viewIdx, setViewIdx] = useState(0)
   const currentView = views[viewIdx]
@@ -36,7 +36,7 @@ export default function App() {
         <CameraRig view={currentView} />
 
         <Pixelate scale={currentView.pixelScale} snap />
-        <FPSLimiter fps={20} />
+        <FPSLimiter fps={25} />
       </Canvas>
 
       <ControlsOverlay
@@ -52,7 +52,7 @@ export default function App() {
     absolute bottom-2 left-1/2 -translate-x-1/2
     text-sm text-white/80
     bg-black/40 border border-white/30
-    rounded-full px-3 
+    rounded-full px-3
     backdrop-blur-sm
     hover:bg-black/60 hover:text-white
     transition

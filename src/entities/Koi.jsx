@@ -32,7 +32,7 @@ function Koi({
   count = 100,
 
   // Pond bounds
-  pondRadius = 25,
+  pondRadius = 20,
   depth = [-4.5, 0],
 
   // Koi visuals
@@ -318,7 +318,10 @@ function Koi({
         v[3 * i + 2] = dirZ * speed
 
         // scale
-        scl.current[i] = THREE.MathUtils.lerp(scaleRange[0], scaleRange[1], Math.random())
+
+        const r = Math.random() ** 2.0; // tweak exponent: 2, 3, etc.
+        scl.current[i] = THREE.MathUtils.lerp(scaleRange[0], scaleRange[1], r)
+
       }
 
       persistent.initialized = true

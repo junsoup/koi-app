@@ -16,7 +16,7 @@ export default function WaterPlane({
   y,
   water,
   levels = 4,
-  opacity = .6
+  opacity = .55
 }) {
   const { vertexShader } = useWave()
   const subDivisions = Math.trunc(size / 2)

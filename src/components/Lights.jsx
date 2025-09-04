@@ -14,7 +14,7 @@ export default function Lights({ debug = false }) {
 
   return (
     <>
-      <ambientLight intensity={7} color={THEME.ambientLight} />
+      <ambientLight intensity={7.5} color={THEME.ambientLight} />
       </>
   )
 }
