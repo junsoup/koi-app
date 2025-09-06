@@ -24,10 +24,12 @@
     "react-dom": "^18 || ^19",
     "three": "^0.179 || ^0.180",
     "@react-three/fiber": "^9.3.0",
-    "@react-three/drei": "^10.7.4""zustand": "^5.0.8"
+    "@react-three/drei": "^10.7.4",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
-    "zustand": "^5.0.8""@vitejs/plugin-react": "^5.0.0",
+    "zustand": "^5.0.8",
+    "@vitejs/plugin-react": "^5.0.0",
     "vite": "^7.1.2",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
