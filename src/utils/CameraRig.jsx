@@ -11,7 +11,7 @@ export default function CameraRig({ view }) {
     controls.current.setLookAt(
       view.pos[0], view.pos[1], view.pos[2],  // camera position
       0, 0, 0,                                // target
-      true                                    // smooth
+      true                                    // lerp 
     )
     controls.current.zoomTo(view.zoom, true)
   }, [view])

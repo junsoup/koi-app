@@ -9,12 +9,10 @@ export const THEMES = {
     water: '#3D7080',
     ambientLight: '#EEDAAF',
   },
-  debug: {
+  /*debug: {
     background: '#003033',
     water: '#333',
     ambientLight: '#ddd',
     dirLight: '#ddd',
-  },
+  },*/
 }
-
-export const THEME = THEMES.forest
