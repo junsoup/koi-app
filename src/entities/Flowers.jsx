@@ -30,6 +30,6 @@ export default function Flowers({ pads }) {
     }
     return out
   }, [pads])
-  return <InstancedGLTF path="/flower.glb" transforms={transforms} patchMaterial={vertexShader} />
+  return <InstancedGLTF path="flower.glb" transforms={transforms} patchMaterial={vertexShader} />
 }
 

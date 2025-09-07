@@ -10,12 +10,8 @@ export default function InstancedGLTF({
   castShadow = false,
   receiveShadow = false,
 }) {
-  const resolvedPath = useMemo(() => {
-    if (typeof path === 'string') return assetUrl(path.replace(/^\//, ''))
-    return path
-  }, [path])
-
-  const { scene } = useGLTF(resolvedPath)
+  console.log(path)
+  const { scene } = useGLTF(assetUrl(path))
   const parts = useMemo(() => {
     const arr = []
     scene.traverse((o) => {

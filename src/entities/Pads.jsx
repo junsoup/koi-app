@@ -8,6 +8,6 @@ export default function Pads({ pads = [] }) {
     () => pads.map(([x, y, z, s]) => [x, y, z, s, Math.random() * Math.PI * 2, 0, 0]),
     [pads]
   )
-  return <InstancedGLTF path="/pad.glb" transforms={transforms} patchMaterial={vertexShader} />
+  return <InstancedGLTF path="pad.glb" transforms={transforms} patchMaterial={vertexShader} />
 }
 
