@@ -36,7 +36,7 @@ export default function Grass({
   }
 
   // Estimate blade height
-  const { scene: grassScene } = useGLTF(assetUrl('grass.glb'))
+  const { scene: grassScene } = useGLTF(new URL('../assets/grass.glb', import.meta.url).href)
   const bladeHeight = useMemo(() => {
     let maxH = 1
     grassScene.traverse((o) => {
@@ -138,7 +138,7 @@ export default function Grass({
       {/* Cap flowers placed on the tips of a subset of blades */}
       {capTransforms.length > 0 && (
         <InstancedGLTF
-          path={'flower_cap.glb'}
+          path='flower_cap.glb'
           transforms={capTransforms}
           patchMaterial={vertexShader}
         />
@@ -147,5 +147,5 @@ export default function Grass({
   )
 }
 
-useGLTF.preload(assetUrl('grass.glb'))
-useGLTF.preload(assetUrl('flower_cap.glb'))
+useGLTF.preload(new URL('../assets/grass.glb', import.meta.url).href)
+useGLTF.preload(new URL('../assets/flower_cap.glb', import.meta.url).href)

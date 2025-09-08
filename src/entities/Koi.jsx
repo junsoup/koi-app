@@ -7,7 +7,6 @@ import { useFrame } from '@react-three/fiber'
 import { useWave } from '../engine/WaveProvider'
 import { SimplexNoise } from 'three/examples/jsm/math/SimplexNoise.js'
 import { useMouseState } from '../store/usePond'
-import { assetUrl } from '../utils/assetUrl'
 
 function quatFromDirNoRoll(dir, out) {
   const len2 = dir.lengthSq()
@@ -24,7 +23,7 @@ function quatFromDirNoRoll(dir, out) {
 }
 
 function Koi({
-  path = assetUrl('koi.glb'),
+  path = new URL('../assets/koi.glb', import.meta.url).href,
   count = 100,
 
   // Pond bounds
@@ -494,6 +493,6 @@ diffuseColor.rgb *= baseColor;
   )
 }
 
-useGLTF.preload(assetUrl('koi.glb'))
+useGLTF.preload(new URL('../assets/koi.glb', import.meta.url).href)
 
 export default React.memo(Koi)
