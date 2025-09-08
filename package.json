@@ -19,14 +19,17 @@
     "src"
   ],
   "peerDependencies": {
-    "react": "^19 || ^18",
-    "react-dom": "^19 || ^18",
+    "react": "^19.0.0 || ^18.0.0",
+    "react-dom": "^19.0.0 || ^18.0.0",
     "three": "^0.180.0",
-    "@react-three/fiber": "^9.3.0",
-    "@react-three/drei": "^10.7.0",
+    "@react-three/fiber": "^9.0.0",
+    "@react-three/drei": "^10.0.0",
     "zustand": "^5.0.0"
   },
+
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.13",
+    "tailwindcss": "^4.1.13",
     "lucide-react": "^0.542.0"
   },
   "devDependencies": {
