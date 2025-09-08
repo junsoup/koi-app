@@ -15,9 +15,7 @@ function Scene({ theme }) {
       <WaterPlane size={100} y={-0.1} water={theme.water} />
       <Pads pads={pads} />
       <Flowers pads={pads} />
-      <Grass
-        pads={pads}
-      />
+      <Grass pads={pads} />
       <Koi count={20} area={20} depth={[-2.5, -0.4]} />
     </WaveProvider>
   )

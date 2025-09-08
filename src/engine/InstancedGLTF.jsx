@@ -3,13 +3,15 @@ import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
 export default function InstancedGLTF({
-  path,
-  transforms = [],                  // Array<[x,y,z, s, yaw, pitch, roll]>
-  patchMaterial,                    // function(material) or undefined
+  url,
+  transforms = [],                    // Array<[x,y,z, s, yaw, pitch, roll]>
+  patchMaterial,                      // function(material) or undefined
   castShadow = false,
   receiveShadow = false,
 }) {
-  const { scene } = useGLTF(new URL('../assets/' + path, import.meta.url).href)
+
+  const { scene } = useGLTF(url)
+
   const parts = useMemo(() => {
     const arr = []
     scene.traverse((o) => {

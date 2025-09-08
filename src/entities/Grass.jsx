@@ -3,15 +3,12 @@ import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import InstancedGLTF from '../engine/InstancedGLTF'
 import { useWave } from '../engine/WaveProvider'
-import { assetUrl } from '../utils/assetUrl'
 
-/**
- * Props:
- *  pads: [x,y,z,padScale,prob][]
- */
-export default function Grass({
-  pads = [],
-}) {
+import grassUrl from '../assets/grass.glb?url'
+import flowerCapUrl from '../assets/flower_cap.glb?url'
+
+
+export default function Grass({ pads = [] }) {
   const { vertexShader } = useWave()
 
   // Grass params
@@ -28,15 +25,10 @@ export default function Grass({
     maxTotal: 6000,
   }
   // Grass Flower params
-  const pc = {
-    chance: 0.4,
-    upFactor: 0.95,
-    jitter: 0.08,
-    scale: 0.1
-  }
+  const pc = { chance: 0.4, upFactor: 0.95, jitter: 0.08, scale: 0.1 }
 
   // Estimate blade height
-  const { scene: grassScene } = useGLTF(new URL('../assets/grass.glb', import.meta.url).href)
+  const { scene: grassScene } = useGLTF(grassUrl)
   const bladeHeight = useMemo(() => {
     let maxH = 1
     grassScene.traverse((o) => {
@@ -52,9 +44,7 @@ export default function Grass({
     return maxH
   }, [grassScene])
 
-  // Build BOTH grass & cap transforms together from the same seed
   const { grassTransforms, capTransforms } = useMemo(() => {
-    // choose bundle seeds near pads
     const seeds = []
     for (const [x, y, z, padScale, prob] of pads) {
       if (prob >= p.seedProbThreshold && Math.random() < p.seedChance) {
@@ -66,7 +56,6 @@ export default function Grass({
       }
     }
 
-    // expand each seed into a dense bundle
     const grass = []
     const capsOut = []
     const tmpEuler = new THREE.Euler()
@@ -78,7 +67,6 @@ export default function Grass({
       const bundleR = Math.max(padScale * p.bundleRadiusFactor, p.bundleRadiusMin)
 
       for (let i = 0; i < count && total < p.maxTotal; i++) {
-        // grass instance
         const t = Math.random() * Math.PI * 2
         const r = Math.sqrt(Math.random()) * bundleR
         const gx = cx + Math.cos(t) * r
@@ -91,7 +79,6 @@ export default function Grass({
         grass.push([gx, gy, gz, s, yaw, pitch, roll])
         total++
 
-        // cap on top of this blade
         if (Math.random() < pc.chance) {
           tmpEuler.set(pitch, yaw, roll)
           const upWorld = up.clone().applyEuler(tmpEuler)
@@ -118,7 +105,6 @@ export default function Grass({
     pads,
     p.seedProbThreshold, p.seedChance, p.maxBundles, p.bundleMin, p.bundleMax,
     p.seedOffsetFactor, p.bundleRadiusFactor, p.bundleRadiusMin, p.scaleFactor, p.maxTotal,
-
     bladeHeight,
   ])
 
@@ -126,19 +112,16 @@ export default function Grass({
 
   return (
     <>
-      {/* Grass bundles */}
       {grassTransforms.length > 0 && (
         <InstancedGLTF
-          path="grass.glb"
+          url={grassUrl}
           transforms={grassTransforms}
           patchMaterial={vertexShader}
         />
       )}
-
-      {/* Cap flowers placed on the tips of a subset of blades */}
       {capTransforms.length > 0 && (
         <InstancedGLTF
-          path='flower_cap.glb'
+          url={flowerCapUrl}
           transforms={capTransforms}
           patchMaterial={vertexShader}
         />
@@ -147,5 +130,5 @@ export default function Grass({
   )
 }
 
-useGLTF.preload(new URL('../assets/grass.glb', import.meta.url).href)
-useGLTF.preload(new URL('../assets/flower_cap.glb', import.meta.url).href)
+useGLTF.preload(grassUrl)
+useGLTF.preload(flowerCapUrl)
