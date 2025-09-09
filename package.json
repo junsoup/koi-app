@@ -15,24 +15,20 @@
   "main": "./src/index.js",
   "module": "./src/index.js",
   "sideEffects": false,
-  "files": [
-    "src"
-  ],
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0",
-    "three": "^0.180.0",
-    "@react-three/fiber": "^9.3.0",
-    "@react-three/drei": "^10.7.5",
-    "zustand": "^5.0.0"
-  },
+  "files": ["src"],
   "dependencies": {
-    "lucide-react": "^0.542.0"
+    "@react-three/drei": "^10.7.4",
+    "@react-three/fiber": "^9.3.0",
+    "@tailwindcss/vite": "^4.1.12",
+    "lucide-react": "^0.542.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^4.1.12",
+    "three": "^0.179.1",
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.2",
-    "vite": "^7.1.5",
-    "tailwindcss": "^4.1.13",
-    "@tailwindcss/vite": "^4.1.13"
+    "vite": "^7.1.5"
   }
 }
