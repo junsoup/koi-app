@@ -1,5 +1,6 @@
+
 // src/state/usePond.js
-import { create } from 'zustand'
+import create from 'zustand'
 import { THEMES } from '../theme'
 
 export const usePond = create((set, get) => ({
