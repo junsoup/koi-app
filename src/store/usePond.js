@@ -1,9 +1,10 @@
 
 // src/state/usePond.js
-import create from 'zustand'
+
+import { createWithEqualityFn } from 'zustand/traditional'
 import { THEMES } from '../theme'
 
-export const usePond = create((set, get) => ({
+export const usePond = createWithEqualityFn((set, get) => ({
   // --- Views ---
   views: [
     { pos: [12, 9, 0], zoom: 50, pixelScale: 4 },
@@ -32,7 +33,7 @@ export const usePond = create((set, get) => ({
     const next = keys[(idx + 1) % keys.length]
     set({ themeKey: next })
   },
-}))
+}), Object.is)
 
 // Reactive selectors
 export const useCurrentView = () => usePond((s) => s.views[s.viewIdx])
