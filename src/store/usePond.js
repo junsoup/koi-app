@@ -1,12 +1,8 @@
-
 // src/state/usePond.js
-
-import { createStore } from 'zustand/vanilla'
-import { useSyncExternalStoreWithSelector } from 'use-sync-external-store/shim/with-selector'
+import { create } from 'zustand'
 import { THEMES } from '../theme'
 
-// ---- Create vanilla store (no React dependency) ----
-export const pondStore = createStore((set, get) => ({
+export const usePond = create((set, get) => ({
   // --- Views ---
   views: [
     { pos: [12, 9, 0], zoom: 50, pixelScale: 4 },
@@ -37,18 +33,7 @@ export const pondStore = createStore((set, get) => ({
   },
 }))
 
-// ---- React hook that subscribes to the vanilla store with a selector ----
-export function usePond(selector = (s) => s, equalityFn = Object.is) {
-  return useSyncExternalStoreWithSelector(
-    pondStore.subscribe,
-    pondStore.getState,
-    pondStore.getState,
-    selector,
-    equalityFn
-  )
-}
-
-// ---- Convenience hooks (unchanged external API) ----
+// Reactive selectors
 export const useCurrentView = () => usePond((s) => s.views[s.viewIdx])
 export const usePixelScale  = () => usePond((s) => s.views[s.viewIdx].pixelScale)
 export const useMouseState  = () => usePond((s) => s.mouse)
