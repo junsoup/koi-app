@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import InstancedGLTF from '../engine/InstancedGLTF'
 import { useWave } from '../engine/WaveProvider'
-import flowerUrl from '../assets/flower.glb?url'
 
 export default function Flowers({ pads }) {
   const { vertexShader } = useWave()
@@ -31,6 +30,6 @@ export default function Flowers({ pads }) {
     }
     return out
   }, [pads])
-  return <InstancedGLTF url={flowerUrl} transforms={transforms} patchMaterial={vertexShader} />
+  return <InstancedGLTF url="flower.glb" transforms={transforms} patchMaterial={vertexShader} />
 }
 

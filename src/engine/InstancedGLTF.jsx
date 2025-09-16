@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
+import { assetUrl } from '../utils/assetUrl'
 
 export default function InstancedGLTF({
   url,
@@ -10,7 +11,7 @@ export default function InstancedGLTF({
   receiveShadow = false,
 }) {
 
-  const { scene } = useGLTF(url)
+  const { scene } = useGLTF(assetUrl(url))
 
   const parts = useMemo(() => {
     const arr = []

@@ -7,7 +7,7 @@ import { useFrame } from '@react-three/fiber'
 import { useWave } from '../engine/WaveProvider'
 import { SimplexNoise } from 'three/examples/jsm/math/SimplexNoise.js'
 import { useMouseState } from '../store/usePond'
-import koiUrl from '../assets/koi.glb?url'
+import { assetUrl } from '../utils/assetUrl'
 
 function quatFromDirNoRoll(dir, out) {
   const len2 = dir.lengthSq()
@@ -35,7 +35,7 @@ function Koi({
   bend = { amp: 0.04, freq: 6.0, speed: 1.8 },
 }) {
   const { vertexShader } = useWave()
-  const { scene } = useGLTF(koiUrl)
+  const { scene } = useGLTF(assetUrl('koi.glb'))
 
   const { point: mousePointArr, has: mouseHas } = useMouseState()
   const mousePoint = { x: mousePointArr[0], y: mousePointArr[1], z: mousePointArr[2] }
@@ -493,6 +493,6 @@ diffuseColor.rgb *= baseColor;
   )
 }
 
-useGLTF.preload(koiUrl)
+useGLTF.preload(assetUrl('koi.glb'))
 
 export default React.memo(Koi)

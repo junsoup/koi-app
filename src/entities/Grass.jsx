@@ -3,10 +3,7 @@ import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 import InstancedGLTF from '../engine/InstancedGLTF'
 import { useWave } from '../engine/WaveProvider'
-
-import grassUrl from '../assets/grass.glb?url'
-import flowerCapUrl from '../assets/flower_cap.glb?url'
-
+import { assetUrl } from '../utils/assetUrl'
 
 export default function Grass({ pads = [] }) {
   const { vertexShader } = useWave()
@@ -28,7 +25,7 @@ export default function Grass({ pads = [] }) {
   const pc = { chance: 0.4, upFactor: 0.95, jitter: 0.08, scale: 0.1 }
 
   // Estimate blade height
-  const { scene: grassScene } = useGLTF(grassUrl)
+  const { scene: grassScene } = useGLTF(assetUrl('grass.glb'))
   const bladeHeight = useMemo(() => {
     let maxH = 1
     grassScene.traverse((o) => {
@@ -114,14 +111,14 @@ export default function Grass({ pads = [] }) {
     <>
       {grassTransforms.length > 0 && (
         <InstancedGLTF
-          url={grassUrl}
+          url='grass.glb'
           transforms={grassTransforms}
           patchMaterial={vertexShader}
         />
       )}
       {capTransforms.length > 0 && (
         <InstancedGLTF
-          url={flowerCapUrl}
+          url='flower_cap.glb'
           transforms={capTransforms}
           patchMaterial={vertexShader}
         />
@@ -130,5 +127,5 @@ export default function Grass({ pads = [] }) {
   )
 }
 
-useGLTF.preload(grassUrl)
-useGLTF.preload(flowerCapUrl)
+useGLTF.preload(assetUrl('grass.glb'))
+useGLTF.preload(assetUrl('flower_cap.glb'))
