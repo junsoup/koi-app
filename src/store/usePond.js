@@ -5,8 +5,8 @@ import { THEMES } from '../theme'
 export const usePond = create((set, get) => ({
   // --- Views ---
   views: [
-    { pos: [12, 9, 0], zoom: 35, pixelScale: 4 },
-    { pos: [0, 15, 0], zoom: 22, pixelScale: 3 },
+    { pos: [12, 9, 0], zoom: 42, pixelScale: 4 },
+    { pos: [0, 15, 0], zoom: 25, pixelScale: 3 },
   ],
   viewIdx: 0,
   nextView: () => set((s) => ({ viewIdx: (s.viewIdx + 1) % s.views.length })),

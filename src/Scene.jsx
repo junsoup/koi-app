@@ -12,7 +12,7 @@ function Scene({ theme }) {
   const pads = useMemo(() => makeLilyPadLayout(), [])
   return (
     <WaveProvider params={{ amp: 1.1, freq: 0.2, speed: 0.2, minY: -20, maxY: 0 }}>
-      <WaterPlane size={100} y={-0.1} water={theme.water} />
+      <WaterPlane size={150} y={-0.1} water={theme.water} />
       <Pads pads={pads} />
       <Flowers pads={pads} />
       <Grass pads={pads} />
